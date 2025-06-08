@@ -1,3 +1,4 @@
 .env
 .venv
-*.in
+requirements.txt
+__pycache__/
