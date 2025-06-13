@@ -17,8 +17,8 @@ class BaseDAO:
                 created_id = result.scalar_one()
                 await session.commit()
                 return created_id
-            except:
-                raise HTTPException(status_code=400, detail="Ошибка добавления")
+            except Exception as e:
+                raise HTTPException(status_code=400, detail=f"Ошибка добавления: {repr(e)}")
 
     @classmethod
     async def find_all(cls):

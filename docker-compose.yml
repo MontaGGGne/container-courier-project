@@ -33,6 +33,7 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 
   backend:
+    tty: true
     container_name: courier_back
     build:
         context: .
@@ -59,10 +60,11 @@ services:
       - 8000:8000
     depends_on:
       - postgres
+      - pgadmin
     restart: always
     # command: ["alembic", "-c", "./alembic.ini", "revision", "--autogenerate"]
     # command: ["alembic", "-c", "./alembic.ini", "upgrade", "head"]
-    command:  bash -c "alembic upgrade head && uvicorn "run:app" --host 0.0.0.0 --port 8000 --reload"
+    command:  bash -c "alembic upgrade head && alembic revision --autogenerate && alembic upgrade head && uvicorn "run:app" --host 0.0.0.0 --port 8000 --reload"
   
   frontend:
     container_name: courier_front

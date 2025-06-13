@@ -6,14 +6,12 @@ from pydantic import BaseModel, Json
 
 class CCOrder(BaseModel):
     data: Optional[Json] = None
-    address_start: str
     address_end: str
     comment: Optional[str] = None
     price: int
     discount: Optional[float] = None
     type_payment: Optional[str] = None
     client: str
-    shop_name: str
     client_number: str
 
     class Config:

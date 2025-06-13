@@ -5,6 +5,9 @@ from app.auth.router import router as auth_router
 from app.logic.router import router as logic_router
 from app.orders.router import router as orders_router
 from app.users.router import router as users_router
+from app.locations.router import router as locations_router
+from app.location_owners.router import router as location_owners_router
+
 
 app = FastAPI()
 
@@ -33,3 +36,5 @@ app.include_router(logic_router)
 app.include_router(orders_router)
 app.include_router(users_router)
 app.include_router(auth_router)
+app.include_router(locations_router)
+app.include_router(location_owners_router)
